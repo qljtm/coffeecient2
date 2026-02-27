@@ -7,33 +7,20 @@ import AuthPage       from "./pages/AuthPage.jsx";
 import OnboardingPage from "./pages/OnboardingPage.jsx";
 
 export default function App() {
-  const [page, setPage] = useState("home");
-  const [user, setUser] = useState(null);
-  // Show onboarding only if user hasn't seen it before
-  const [onboarded, setOnboarded] = useState(
-    () => localStorage.getItem("coffeecient_onboarded") === "1"
-  );
+  const [page, setPage]           = useState("home");
+  const [user, setUser]           = useState(null);
+  // Always starts false — resets to onboarding on every page refresh
+  const [onboarded, setOnboarded] = useState(false);
 
-  const finishOnboarding = () => setOnboarded(true);
+  const logout = () => { setUser(null); setPage("home"); };
 
-  const logout = () => {
-    setUser(null);
-    setPage("home");
-  };
-
-  // Wrap setPage so finishing onboarding also hides the overlay
   const handleSetPage = (p) => {
+    setOnboarded(true);   // dismiss onboarding when navigating away from it
     setPage(p);
-    finishOnboarding();
   };
 
   if (!onboarded) {
-    return (
-      <OnboardingPage
-        setPage={handleSetPage}
-        setUser={setUser}
-      />
-    );
+    return <OnboardingPage setPage={handleSetPage} setUser={setUser} />;
   }
 
   return (
