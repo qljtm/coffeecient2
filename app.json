@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Coffeecient",
+    "slug": "coffeecient",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F9C6D0"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.coffeecient.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F9C6D0"
+      },
+      "package": "com.coffeecient.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
